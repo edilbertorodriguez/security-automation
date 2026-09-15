@@ -27,7 +27,7 @@ Checks include:
 
 Example usage:
 
-    ./security-health-check.sh 10.10.60.101
+`./security-health-check.sh 10.10.60.101`
 
 The script classifies results using:
 
@@ -60,11 +60,11 @@ Features include:
 
 Example usage:
 
-    ./certcheck.py 10.10.60.101 --server-name sec-server01
+`./certcheck.py 10.10.60.101 --server-name sec-server01`
 
 Custom port example:
 
-    ./certcheck.py 10.10.60.101 --port 8443 --server-name sec-server01
+`./certcheck.py 10.10.60.101 --port 8443 --server-name sec-server01`
 
 Exit codes:
 
@@ -97,21 +97,21 @@ Checks include:
 - SSH protocol banner validation
 - SSH host-key retrieval
 - SHA256 host-key fingerprints
-- known_hosts comparison
+- `known_hosts` comparison
 
 Example usage:
 
-    ./sshdiag.py 10.10.60.101
+`./sshdiag.py 10.10.60.101`
 
-The known_hosts validation can help identify:
+The `known_hosts` validation can help identify:
 
 - Server rebuilds
 - Changed SSH host keys
-- Stale known_hosts entries
+- Stale `known_hosts` entries
 - Unexpected server identity changes
 - Potential man-in-the-middle conditions
 
-The diagnostic flow follows a layered troubleshooting approach:
+Diagnostic flow:
 
     Address Resolution
         |
@@ -213,7 +213,7 @@ This project demonstrates practical experience with:
 - SSH
 - SSH host keys
 - SSH fingerprints
-- known_hosts validation
+- `known_hosts` validation
 - PKI
 - Certificate authorities
 - Intermediate certificate authorities
@@ -249,7 +249,7 @@ If a command requires elevated privileges, the script reports that limitation ex
 
 Example:
 
-    [WARN] Cannot determine UFW status without sudo privileges
+`[WARN] Cannot determine UFW status without sudo privileges`
 
 This preserves the principle of least privilege.
 
@@ -274,17 +274,17 @@ This allows the tool to identify:
 
 ### SSH Host-Key Validation
 
-The SSH diagnostic tool compares currently presented SSH host keys against the local known_hosts database.
+The SSH diagnostic tool compares currently presented SSH host keys against the local `known_hosts` database.
 
 A mismatch may indicate:
 
 - A legitimate server rebuild
 - SSH host-key regeneration
-- A stale known_hosts entry
+- A stale `known_hosts` entry
 - A server identity change
 - A possible man-in-the-middle condition
 
-Host-key mismatches should be independently verified before updating known_hosts.
+Host-key mismatches should be independently verified before updating `known_hosts`.
 
 ---
 
@@ -337,11 +337,13 @@ Host-key mismatches should be independently verified before updating known_hosts
 
 ## Example Certificate Check
 
-    ./certcheck.py 10.10.60.101 --server-name sec-server01
+Command:
+
+`./certcheck.py 10.10.60.101 --server-name sec-server01`
 
 Example successful result:
 
-    [PASS] Certificate is valid for 363 more day(s)
+`[PASS] Certificate is valid for 363 more day(s)`
 
 Example hostname mismatch:
 
@@ -350,13 +352,15 @@ Example hostname mismatch:
 
 Example closed port:
 
-    [FAIL] Connection to 10.10.60.101:444 was refused
+`[FAIL] Connection to 10.10.60.101:444 was refused`
 
 ---
 
 ## Example SSH Diagnostic
 
-    ./sshdiag.py 10.10.60.101
+Command:
+
+`./sshdiag.py 10.10.60.101`
 
 Example result:
 
@@ -386,6 +390,7 @@ Example result:
     +-- certcheck.py
     +-- sshdiag.py
     +-- README.md
+    +-- .gitignore
 
 ---
 
@@ -402,7 +407,7 @@ Linux system with:
 
 Ubuntu example:
 
-    sudo apt install python3 openssh-client openssl netcat-openbsd
+`sudo apt install python3 openssh-client openssl netcat-openbsd`
 
 ---
 
@@ -410,29 +415,27 @@ Ubuntu example:
 
 Clone the repository:
 
-    git clone https://github.com/edilbertorodriguez/security-automation.git
+`git clone https://github.com/edilbertorodriguez/security-automation.git`
 
 Enter the project directory:
 
-    cd security-automation
+`cd security-automation`
 
 Make scripts executable:
 
-    chmod +x security-health-check.sh
-    chmod +x certcheck.py
-    chmod +x sshdiag.py
+`chmod +x security-health-check.sh certcheck.py sshdiag.py`
 
 Run the Linux server health check:
 
-    ./security-health-check.sh 10.10.60.101
+`./security-health-check.sh 10.10.60.101`
 
 Run the TLS certificate checker:
 
-    ./certcheck.py 10.10.60.101 --server-name sec-server01
+`./certcheck.py 10.10.60.101 --server-name sec-server01`
 
 Run the SSH diagnostic tool:
 
-    ./sshdiag.py 10.10.60.101
+`./sshdiag.py 10.10.60.101`
 
 ---
 
@@ -457,8 +460,8 @@ The project focuses on operational security tasks such as:
 
 Completed tools:
 
-- security-health-check.sh
-- certcheck.py
-- sshdiag.py
+- `security-health-check.sh`
+- `certcheck.py`
+- `sshdiag.py`
 
 The toolkit was developed as part of a broader hands-on security operations readiness lab.
